@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: perfect-api
+    image: perfect-api
+    restart: unless-stopped
+    env_file:
+      - .dev.vars
+    build:
+      context: .
+      dockerfile: Dockerfile
+      tags:
+        - perfect-api:latest
+    ports:
+      - ${PORT-5000}:${PORT-5000}

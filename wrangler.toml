@@ -1,0 +1,12 @@
+name = "imps-api"
+main = "src/server.ts"
+minify = true
+compatibility_date = "2023-10-01"
+route = "api.imps.com.br/*"
+workers_dev = true
+node_compat = false
+
+[[r2_buckets]]
+binding = 'imps'
+bucket_name = 'imps'
+preview_bucket_name = 'imps'

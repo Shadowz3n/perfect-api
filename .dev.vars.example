@@ -1,0 +1,13 @@
+JWT_SECRET_KEY="secret"
+MONGODB_REALM_SERVICE_NAME="mongodb-atlas"
+MONGODB_REALM_APP_ID=""
+MONGODB_REALM_API_KEY=""
+CLOUDFLARE_TURNSTILE_SECRET_KEY=""
+CLOUDFLARE_TURNSTILE_SITE_KEY=""
+CLOUDFLARE_TURNSTILE_URL="https://challenges.cloudflare.com/turnstile/v0/siteverify"
+R2_URL="https://r2.imps.com.br/"
+
+SES_SMTP_ENDPOINT="email-smtp.us-east-1.amazonaws.com"
+SES_SMTP_PORT=465
+SES_SMTP_USERNAME=""
+SES_SMTP_PASSWORD=""

@@ -1,0 +1,16 @@
+.git
+.gihub
+.gitignore
+.vscode
+Dockerfile
+*.yml
+node_modules
+bun.lockb
+README.md
+.prettierrc
+.prettier.json
+.prettierignore
+.eslintignore
+.eslintrc.js
+.env.example
+bun.lockb
