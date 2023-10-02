@@ -1,29 +1,29 @@
 {
-  "compilerOptions": {
-    "lib": ["ESNext"],
-    "module": "esnext",
-    "target": "esnext",
-    "moduleResolution": "node",
-    "types": ["bun-types"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowJs": true,
-    "checkJs": false,
-    "noEmit": true,
-    "isolatedModules": false,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "alwaysStrict": true,
-    "strict": true,
-    "strictPropertyInitialization": false,
-    "skipLibCheck": true,
-    "baseUrl": "src",
-    "paths": {
-      "@/*": ["*"]
-    }
-  },
-  "include": ["src/**/*", "**/*.test.ts"],
-  "exclude": ["node_modules"]
+	"compilerOptions": {
+		"lib": ["ESNext"],
+		"module": "es2022",
+		"target": "es2021",
+		"moduleResolution": "node",
+		"types": ["@cloudflare/workers-types", "bun-types"],
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"allowJs": true,
+		"checkJs": false,
+		"noEmit": true,
+		"isolatedModules": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"alwaysStrict": true,
+		"strict": true,
+		"strictPropertyInitialization": false,
+		"skipLibCheck": true,
+		"baseUrl": "src",
+		"paths": {
+			"@/*": ["*"]
+		}
+	},
+	"include": ["src/**/*", "**/*.test.ts"],
+	"exclude": ["node_modules"]
 }

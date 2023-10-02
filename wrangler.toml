@@ -1,10 +1,9 @@
 name = "imps-api"
 main = "src/server.ts"
 minify = true
-compatibility_date = "2023-10-01"
+compatibility_date = "2023-09-22"
 route = "api.imps.com.br/*"
 workers_dev = true
-node_compat = false
 
 [[r2_buckets]]
 binding = 'imps'

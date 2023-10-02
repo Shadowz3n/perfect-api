@@ -1,9 +1,10 @@
 import { TUser } from "@/domain/user/TUser";
+import { Cookie } from "elysia/dist/cookie";
 
 export type THttpRequest = {
 	body: any;
-	cookie: any;
 	headers: Record<string, string | null>;
+	cookie: Record<string, Cookie<any>>;
 	params: never;
 	path: string;
 	query: Record<string, string | null>;
