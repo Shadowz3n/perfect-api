@@ -18,3 +18,5 @@ const App = new Elysia()
 	.use(authRoutes);
 
 export { App };
+
+export type TApp = typeof App;

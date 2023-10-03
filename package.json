@@ -10,7 +10,7 @@
   "dependencies": {
     "@elysiajs/cors": "^0.7.1",
     "@elysiajs/swagger": "^0.7.3",
-    "elysia": "latest",
+    "elysia": "^0.7.15",
     "http-status-codes": "^2.3.0"
   },
   "devDependencies": {
