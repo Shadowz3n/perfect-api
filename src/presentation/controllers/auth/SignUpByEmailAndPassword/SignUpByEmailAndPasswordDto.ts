@@ -1,10 +1,10 @@
 import { THttpRequest } from "@/presentation/protocols/thttp.request";
 import { t } from "elysia";
 
-export const AuthByEmailAndPasswordDto = {
+export const SignUpByEmailAndPasswordDto = {
 	detail: {
 		tags: ["Auth"],
-		summary: "Auth User By Email and password",
+		summary: "Sign Up User By Email and password",
 	},
 	body: t.Object({
 		email: t.String({
@@ -12,7 +12,7 @@ export const AuthByEmailAndPasswordDto = {
 			default: "email@email.com",
 		}),
 		password: t.String(),
-		rememberMe: t.Boolean(),
+		authenticityToken: t.String(),
 	}),
 	response: {
 		200: t.Object({
@@ -21,7 +21,7 @@ export const AuthByEmailAndPasswordDto = {
 	},
 };
 
-export interface IAuthByLoginAndPasswordDtoType extends THttpRequest {
-	body: typeof AuthByEmailAndPasswordDto.body.static;
+export interface ISignUpByEmailAndPasswordDto extends THttpRequest {
+	body: typeof SignUpByEmailAndPasswordDto.body.static;
 	env: Record<string, string | null>;
 }

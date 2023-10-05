@@ -1,14 +1,14 @@
-import { IAuthByLoginAndPasswordDtoType } from "@/presentation/controllers/auth/AuthByEmailAndPassword/AuthByEmailAndPasswordDto";
+import { ISignUpByEmailAndPasswordDto } from "@/presentation/controllers/auth/SignUpByEmailAndPassword/SignUpByEmailAndPasswordDto";
 import { THttpResponse } from "@/presentation/protocols/thttp.response";
 import { IController } from "@/presentation/protocols/icontroller";
 import { ok } from "@/presentation/helpers/http.helper";
 
-export class AuthByEmailAndPasswordController implements IController {
-	async handle(data: IAuthByLoginAndPasswordDtoType): Promise<THttpResponse> {
+export class SignUpByEmailAndPasswordController implements IController {
+	async handle(data: ISignUpByEmailAndPasswordDto): Promise<THttpResponse> {
 		const requestData = {
 			email: data.body.email,
 			password: data.body.password,
-			rememberMe: data.body.rememberMe,
+			authenticityToken: data.body.authenticityToken,
 			env: data.env,
 		};
 		return ok({ accessToken: "" });
