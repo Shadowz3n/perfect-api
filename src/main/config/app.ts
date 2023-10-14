@@ -1,3 +1,4 @@
+import { healthCheckRoutes } from "@/main/routes/healthCheck.routes";
 import { authRoutes } from "@/main/routes/auth.routes";
 import { swagger } from "@elysiajs/swagger";
 import cors from "@elysiajs/cors";
@@ -18,9 +19,9 @@ const App = new Elysia({
 	)
 	.use(cors())
 	.use(authRoutes)
-	.listen(5000, ({ hostname, port }: { hostname: string; port: number }) => {
-		console.log(`Running at http://${hostname}:${port}`);
-	});
+	.use(healthCheckRoutes);
+
+console.log(`Running at http://0.0.0.0:3000`);
 
 export { App };
 

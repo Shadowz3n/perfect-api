@@ -4,11 +4,12 @@ COPY package.json .
 COPY bun.lockb .
 RUN bun install
 COPY . .
-RUN bun run build
+RUN bun build --target=bun ./src/server.ts --outfile server.js
 
-FROM gcr.io/distroless/base
+FROM gcr.io/distroless/base as runner
 WORKDIR /app
 COPY --from=builder /usr/local/bin/bun bun
 COPY --from=builder /app/server.js .
 ENV NODE_ENV production
-CMD ["./bun", "server.js"]
+EXPOSE 3000
+CMD ["./bun", "run", "server.js"]

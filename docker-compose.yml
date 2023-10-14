@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   api:
-    container_name: perfect-api
     image: perfect-api
     restart: unless-stopped
     env_file:
@@ -10,13 +9,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      tags:
-        - perfect-api:latest
+    deploy:
+      mode: replicated
+      replicas: 1
     healthcheck:
-      test: curl --silent -f http://localhost:5000 > /dev/null && exit 1 || exit 0
+      test: curl --silent -f http://localhost:3000/healthcheck/v1 > /dev/null && exit 1 || exit 0
       interval: 5s
       timeout: 5s
-      retries: 0
+      retries: 3
       start_period: 1s
     ports:
-      - ${PORT-5000}:${PORT-5000}
+      - ${PORT-3000}:${PORT-3000}
