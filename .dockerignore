@@ -5,7 +5,6 @@
 Dockerfile
 *.yml
 node_modules
-bun.lockb
 README.md
 .prettierrc
 .prettier.json
@@ -13,4 +12,3 @@ README.md
 .eslintignore
 .eslintrc.js
 .env.example
-bun.lockb

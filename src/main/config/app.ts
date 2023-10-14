@@ -17,7 +17,10 @@ const App = new Elysia({
 		}),
 	)
 	.use(cors())
-	.use(authRoutes);
+	.use(authRoutes)
+	.listen(5000, ({ hostname, port }: { hostname: string; port: number }) => {
+		console.log(`Running at http://${hostname}:${port}`);
+	});
 
 export { App };
 

@@ -12,5 +12,11 @@ services:
       dockerfile: Dockerfile
       tags:
         - perfect-api:latest
+    healthcheck:
+      test: curl --silent -f http://localhost:5000 > /dev/null && exit 1 || exit 0
+      interval: 5s
+      timeout: 5s
+      retries: 0
+      start_period: 1s
     ports:
       - ${PORT-5000}:${PORT-5000}

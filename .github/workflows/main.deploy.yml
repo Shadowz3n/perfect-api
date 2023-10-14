@@ -10,9 +10,30 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Activate pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-package.json-${{ hashFiles('package.json') }}
+
       - name: Install dependencies
-        run: 'npm install'
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: pnpm install
+      
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
         with:
