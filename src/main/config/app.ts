@@ -3,7 +3,9 @@ import { swagger } from "@elysiajs/swagger";
 import cors from "@elysiajs/cors";
 import { Elysia } from "elysia";
 
-const App = new Elysia()
+const App = new Elysia({
+	aot: false,
+})
 	.use(
 		swagger({
 			documentation: {
