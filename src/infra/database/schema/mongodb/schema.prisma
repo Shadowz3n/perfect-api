@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URL")
+}
+
+model Log {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  ip          String
+  type        LogType
+  user        User?   @relation(fields: [userId], references: [id])
+  userId      String? @db.ObjectId
+  message     String
+  createdAt   DateTime
+
+  @@map("logs")
+}
+
+model User {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  firstName   String
+  lastName    String
+  email       String    @unique
+  password    String
+  role        UserRole  @default(USER)
+  Log         Log[]
+  createdAt   DateTime
+  updatedAt   DateTime @updatedAt
+
+  @@map("users")
+}
+
+enum UserRole {
+  ADMIN       @map("admin")
+  USER        @map("user")
+
+  @@map("_UserRole")
+}
+
+enum LogType {
+  EmailAuth
+}

@@ -4,6 +4,7 @@ COPY package.json .
 COPY bun.lockb .
 RUN bun install
 COPY . .
+RUN bun run prisma:generate
 RUN bun build --target=bun ./src/server.ts --outfile server.js
 
 FROM gcr.io/distroless/base as runner
