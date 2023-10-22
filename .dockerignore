@@ -4,7 +4,6 @@
 .vscode
 Dockerfile
 *.yml
-node_modules
 README.md
 .prettierrc
 .prettier.json
