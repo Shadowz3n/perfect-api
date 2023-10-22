@@ -1,6 +1,6 @@
 {
   "name": "imps-api",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "scripts": {
     "dev": "bun run prisma:generate 1&> /dev/null && bun --watch run src/server.ts",
     "build": "bun build --minify --target=bun ./src/server.ts --outfile server.js",
@@ -11,9 +11,11 @@
   "dependencies": {
     "@elysiajs/cors": "^0.7.1",
     "@elysiajs/swagger": "^0.7.3",
+    "@lucia-auth/adapter-prisma": "^3.0.2",
     "@prisma/client": "5.4.2",
     "elysia": "^0.7.17",
     "http-status-codes": "^2.3.0",
+    "lucia": "^2.7.2",
     "prisma": "^5.4.2"
   },
   "devDependencies": {

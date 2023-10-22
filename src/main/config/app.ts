@@ -1,5 +1,6 @@
 import { healthCheckRoutes } from "@/main/routes/healthCheck.routes";
 import { authRoutes } from "@/main/routes/auth.routes";
+import { userRoutes } from "@/main/routes/user.routes";
 import { swagger } from "@elysiajs/swagger";
 import cors from "@elysiajs/cors";
 import { Elysia } from "elysia";
@@ -19,6 +20,7 @@ const App = new Elysia({
 	)
 	.use(cors())
 	.use(authRoutes)
+	.use(userRoutes)
 	.use(healthCheckRoutes);
 
 console.log(`Running at http://0.0.0.0:3000`);

@@ -20,17 +20,38 @@ model Log {
 }
 
 model User {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  firstName   String
-  lastName    String
-  email       String    @unique
-  password    String
-  role        UserRole  @default(USER)
-  Log         Log[]
-  createdAt   DateTime
-  updatedAt   DateTime @updatedAt
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  firstName     String
+  lastName      String
+  email         String    @unique
+  password      String
+  role          UserRole  @default(USER)
+  Log           Log[]
+  auth_session  Session[]
+  key           Key[]
+  createdAt     DateTime
+  updatedAt     DateTime @updatedAt
 
-  @@map("users")
+  @@map("user")
+}
+
+model Session {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id           String  @db.ObjectId
+  active_expires    BigInt
+  idle_expires      BigInt
+  user              User?   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+model Key {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  hashed_password   String?
+  user_id           String  @db.ObjectId
+  user              User?   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
 }
 
 enum UserRole {
