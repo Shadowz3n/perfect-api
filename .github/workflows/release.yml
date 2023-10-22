@@ -17,6 +17,9 @@ jobs:
       - name: Install
         run: bun install
 
+      - name: Prisma Generate
+        run: bun run prisma:generate
+
       - name: Build
         run: bun build --minify --target=bun ./src/server.ts --outfile server.js
 

@@ -12,3 +12,4 @@ README.md
 .eslintignore
 .eslintrc.js
 .env.example
+.npmignore

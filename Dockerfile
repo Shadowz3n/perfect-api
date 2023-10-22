@@ -1,9 +1,7 @@
 FROM oven/bun:canary-alpine@sha256:76c0955c7252745cf876c7db0eaceaa3c5f410be680bb608c277ca10c7f2f9db as builder
 WORKDIR /app
-COPY package.json .
-COPY bun.lockb .
-RUN bun install
 COPY . .
+RUN bun install
 RUN bun run prisma:generate
 RUN bun build --minify --target=bun ./src/server.ts --outfile server.js
 
