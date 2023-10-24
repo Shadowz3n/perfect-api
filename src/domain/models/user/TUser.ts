@@ -3,8 +3,9 @@ export type TUser = {
 	firstName: string;
 	lastName: string;
 	email: string;
-	password: string;
+	password?: string;
 	picture: string;
+	role: string;
 	createdAt: Date;
 	updatedAt?: Date;
 };

@@ -23,5 +23,4 @@ export const AuthByEmailAndPasswordDto = {
 
 export interface IAuthByLoginAndPasswordDto extends THttpRequest {
 	body: typeof AuthByEmailAndPasswordDto.body.static;
-	env: Record<string, string | null>;
 }

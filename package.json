@@ -1,26 +1,27 @@
 {
-	"name": "imps-api",
-	"version": "0.3.0",
-	"scripts": {
-		"dev": "bun run prisma:generate 1&> /dev/null && bun --watch run src/server.ts",
-		"build": "bun build --minify --target=bun ./src/server.ts --outfile server.js",
-		"format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}'",
-		"docker": "docker compose --compatibility up -d --build --force-recreate",
-		"prisma:generate": "prisma generate --schema=src/infra/database/schema/mongodb/schema.prisma"
-	},
-	"dependencies": {
-		"@elysiajs/cors": "^0.7.1",
-		"@elysiajs/swagger": "^0.7.3",
-		"@lucia-auth/adapter-prisma": "^3.0.2",
-		"@prisma/client": "^5.4.2",
-		"elysia": "^0.7.17",
-		"http-status-codes": "^2.3.0",
-		"lucia": "^2.7.2",
-		"prisma": "^5.4.2"
-	},
-	"devDependencies": {
-		"bun-types": "latest",
-		"prettier": "^3.0.3"
-	},
-	"module": "src/server.ts"
+  "name": "imps-api",
+  "version": "0.4.0",
+  "scripts": {
+    "dev": "bun run prisma:generate 1&> /dev/null && bun --watch run ./src/server.ts",
+    "build": "bun build --minify --target=bun ./src/server.ts --outfile server.js",
+    "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}'",
+    "docker": "docker compose --compatibility up -d --build --force-recreate",
+    "prisma:generate": "prisma generate --schema=./src/infra/database/schema/mongodb/schema.prisma"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^0.7.1",
+    "@elysiajs/swagger": "^0.7.3",
+    "@lucia-auth/adapter-prisma": "^3.0.2",
+    "@prisma/client": "^5.4.2",
+    "bson": "^6.2.0",
+    "elysia": "^0.7.17",
+    "http-status-codes": "^2.3.0",
+    "lucia": "^2.7.2",
+    "prisma": "^5.4.2"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "prettier": "^3.0.3"
+  },
+  "module": "src/server.ts"
 }

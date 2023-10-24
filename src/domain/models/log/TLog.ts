@@ -1,4 +1,4 @@
-import { LogTypeEnum } from "@/domain/log/log.type.enum";
+import { LogTypeEnum } from "@/domain/models/log/LogTypeEnum";
 
 export type TLog = {
 	id: string;

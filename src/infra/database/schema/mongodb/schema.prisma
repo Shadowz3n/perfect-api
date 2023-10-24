@@ -19,30 +19,37 @@ model Log {
   @@map("logs")
 }
 
+enum UserRole {
+  ADMIN       @map("admin")
+  USER        @map("user")
+}
+
 model User {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   firstName     String
   lastName      String
   email         String    @unique
   password      String
-  role          UserRole  @default(USER)
+  picture       String
+  role          UserRole
   Log           Log[]
   auth_session  Session[]
   key           Key[]
   createdAt     DateTime
-  updatedAt     DateTime @updatedAt
+  updatedAt     DateTime  @updatedAt
 
-  @@map("user")
+  @@map("users")
 }
 
 model Session {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  id                String  @id @map("_id")
   user_id           String  @db.ObjectId
   active_expires    BigInt
   idle_expires      BigInt
   user              User?   @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@index([user_id])
+  @@map("sessions")
 }
 
 model Key {
@@ -52,13 +59,7 @@ model Key {
   user              User?   @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@index([user_id])
-}
-
-enum UserRole {
-  ADMIN       @map("admin")
-  USER        @map("user")
-
-  @@map("_UserRole")
+  @@map("keys")
 }
 
 enum LogType {

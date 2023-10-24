@@ -1,4 +1,4 @@
-import { TUser } from "@/domain/user/TUser";
+import { TUser } from "@/domain/models/user/TUser";
 import { Cookie } from "elysia/dist/cookie";
 
 export type THttpRequest = {

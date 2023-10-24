@@ -1,22 +1,25 @@
 import { MongoDBClient } from "@/infra/database/repositories/mongodb/mongo.db.client";
 import { THttpRequest } from "@/presentation/protocols/thttp.request";
 import { IController } from "@/presentation/protocols/icontroller";
-import { TUser } from "@/domain/user/TUser";
+import { TUser } from "@/domain/models/user/TUser";
 import { Context } from "elysia";
 
 export const routerAdapter = (controller: IController) => {
 	return async (request: Context): Promise<Response> => {
 		const lucia = MongoDBClient.getLucia();
-
-		const authorizationHeader = request.headers["Authorization"];
+		const authorizationHeader = request.headers["authorization"];
 		const sessionId = lucia.readBearerToken(authorizationHeader);
 
 		let user: TUser | null = null;
 		if (sessionId) {
-			const session = await lucia.getSession(sessionId);
-			if (session) {
-				user = session.user;
-			}
+			try {
+				const session = await lucia.validateSession(sessionId);
+				delete session.user.password;
+				delete session.user.userId;
+				if (session) {
+					user = session.user;
+				}
+			} catch {}
 		}
 
 		const req: THttpRequest = {

@@ -1,14 +1,13 @@
 import { IEncrypter } from "@/data/protocols/cryptography/iencrypter";
 
-export class Bcrypt implements IEncrypter {
-	async hash(data: { rawText: string; cost: number }): Promise<string> {
+export const Bcrypt: IEncrypter = class {
+	public static async hash(data: { rawText: string }): Promise<string> {
 		return await Bun.password.hash(data.rawText, {
-			algorithm: "bcrypt",
-			cost: data.cost,
+			algorithm: "argon2id",
 		});
 	}
 
-	async verify(data: { rawText: string; hash: string }): Promise<boolean> {
+	public static async verify(data: { rawText: string; hash: string }): Promise<boolean> {
 		return await Bun.password.verify(data.rawText, data.hash);
 	}
-}
+};

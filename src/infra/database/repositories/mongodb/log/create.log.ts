@@ -1,6 +1,6 @@
 import { ICreateLogRepository } from "@/data/protocols/repositories/log/icreate.log.repository";
 import { MongoDBClient } from "@/infra/database/repositories/mongodb/mongo.db.client";
-import { LogTypeEnum } from "@/domain/log/log.type.enum";
+import { LogTypeEnum } from "@/domain/models/log/LogTypeEnum";
 
 export class CreateLogMongoDB implements ICreateLogRepository {
 	constructor() {}
