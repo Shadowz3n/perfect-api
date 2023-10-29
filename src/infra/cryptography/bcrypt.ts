@@ -1,6 +1,7 @@
+import { IDecrypter } from "@/data/protocols/cryptography/idecrypter";
 import { IEncrypter } from "@/data/protocols/cryptography/iencrypter";
 
-export const Bcrypt: IEncrypter = class {
+export const Bcrypt: IEncrypter & IDecrypter = class {
 	public static async hash(data: { rawText: string }): Promise<string> {
 		return await Bun.password.hash(data.rawText, {
 			algorithm: "argon2id",
